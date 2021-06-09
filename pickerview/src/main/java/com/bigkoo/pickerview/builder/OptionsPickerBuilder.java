@@ -2,7 +2,6 @@ package com.bigkoo.pickerview.builder;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -166,7 +165,7 @@ public class OptionsPickerBuilder {
      *
      * @param dividerColor color resId.
      */
-    public OptionsPickerBuilder setDividerColor(@ColorInt int dividerColor) {
+    public OptionsPickerBuilder setDividerColor(int dividerColor) {
         mPickerOptions.dividerColor = dividerColor;
         return this;
     }
@@ -196,7 +195,7 @@ public class OptionsPickerBuilder {
      *
      * @param textColorOut color resId.
      */
-    public OptionsPickerBuilder setTextColorOut(@ColorInt int textColorOut) {
+    public OptionsPickerBuilder setTextColorOut(int textColorOut) {
         mPickerOptions.textColorOut = textColorOut;
         return this;
     }

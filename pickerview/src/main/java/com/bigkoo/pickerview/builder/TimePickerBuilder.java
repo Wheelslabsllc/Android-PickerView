@@ -1,7 +1,6 @@
 package com.bigkoo.pickerview.builder;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -190,7 +189,7 @@ public class TimePickerBuilder {
      * @param dividerColor
      */
 
-    public TimePickerBuilder setDividerColor(@ColorInt int dividerColor) {
+    public TimePickerBuilder setDividerColor(int dividerColor) {
         mPickerOptions.dividerColor = dividerColor;
         return this;
     }
@@ -221,7 +220,7 @@ public class TimePickerBuilder {
      *
      * @param outSideColor
      */
-    public TimePickerBuilder setOutSideColor(@ColorInt int outSideColor) {
+    public TimePickerBuilder setOutSideColor(int outSideColor) {
         mPickerOptions.outSideColor = outSideColor;
         return this;
     }
@@ -231,7 +230,7 @@ public class TimePickerBuilder {
      *
      * @param textColorCenter
      */
-    public TimePickerBuilder setTextColorCenter(@ColorInt int textColorCenter) {
+    public TimePickerBuilder setTextColorCenter(int textColorCenter) {
         mPickerOptions.textColorCenter = textColorCenter;
         return this;
     }
@@ -241,7 +240,7 @@ public class TimePickerBuilder {
      *
      * @param textColorOut
      */
-    public TimePickerBuilder setTextColorOut(@ColorInt int textColorOut) {
+    public TimePickerBuilder setTextColorOut(int textColorOut) {
         mPickerOptions.textColorOut = textColorOut;
         return this;
     }
