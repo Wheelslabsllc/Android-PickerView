@@ -1,11 +1,11 @@
 package com.bigkoo.pickerviewdemo;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,9 +13,9 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerviewdemo.bean.JsonBean;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import java.util.List;
  * @author 小嵩
  * @date 2017-3-16
  */
-public class JsonDataActivity extends AppCompatActivity implements View.OnClickListener {
+public class JsonDataActivity extends Activity implements View.OnClickListener {
 
 
     private List<JsonBean> options1Items = new ArrayList<>();
@@ -193,10 +193,27 @@ public class JsonDataActivity extends AppCompatActivity implements View.OnClickL
         ArrayList<JsonBean> detail = new ArrayList<>();
         try {
             JSONArray data = new JSONArray(result);
-            Gson gson = new Gson();
             for (int i = 0; i < data.length(); i++) {
-                JsonBean entity = gson.fromJson(data.optJSONObject(i).toString(), JsonBean.class);
-                detail.add(entity);
+                final JSONObject provenceObject = data.optJSONObject(i);
+
+                final JsonBean provenceBean = new JsonBean();
+                detail.add(provenceBean);
+                provenceBean.setName(provenceObject.getString("name"));
+                provenceBean.setCityList(new ArrayList<JsonBean.CityBean>());
+
+                final JSONArray cityObjectJsonArray = provenceObject.getJSONArray("city");
+                for(int j=0; j < cityObjectJsonArray.length(); j++) {
+                    final JSONObject cityObject = cityObjectJsonArray.optJSONObject(j);
+                    final JsonBean.CityBean cityBean = new JsonBean.CityBean();
+                    provenceBean.getCityList().add(cityBean);
+                    cityBean.setName(cityObject.getString("name"));
+                    cityBean.setArea(new ArrayList<String>());
+                    final JSONArray areaStrings = cityObject.getJSONArray("area");
+                    for(int k=0; k< areaStrings.length(); k++) {
+                        final String areaName = areaStrings.getString(k);
+                        cityBean.getArea().add(areaName);
+                    }
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

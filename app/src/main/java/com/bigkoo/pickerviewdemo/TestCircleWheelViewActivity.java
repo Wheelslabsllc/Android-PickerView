@@ -1,8 +1,7 @@
 package com.bigkoo.pickerviewdemo;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.bigkoo.pickerview.adapter.ArrayWheelAdapter;
@@ -17,10 +16,10 @@ import java.util.List;
  * author: Created by lixiaotong on 2019-07-30
  * e-mail: 516030811@qq.com
  */
-public class TestCircleWheelViewActivity extends AppCompatActivity {
+public class TestCircleWheelViewActivity extends Activity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_circle_wheelview);
 
